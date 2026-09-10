@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ExpensesManagement</string>
+    <string name="setting_nav_title">تنظیمات</string>
+    <string name="chart_nav_title">آمار</string>
+    <string name="invoices_nav_title">فاکتورها</string>
+    <string name="home_nav_title">خانه</string>
+    <string name="username_default">نام کاربری</string>
+    <string name="home_report_title">کل هزینه های ماه جاری</string>
+    <string name="currency_title">تومان</string>
+    <string name="language_setting_title">زبان برنامه</string>
+    <string name="theme_setting_title">تم برنامه</string>
+    <string name="welcome_text">خوش آمدی</string>
+    <string name="theme_dark_title">تاریک</string>
+    <string name="theme_light_title">روشن</string>
+    <string name="username_title">نام کاربری</string>
+    <string name="email_title">ایمیل</string>
+    <string name="phone_title">شماره همراه</string>
+    <string name="birthday_title">تاریخ تولد</string>
+    <string name="gender_title">جنسیت</string>
+    <string name="profile_title">پروفایل</string>
+    <string name="male_title">مرد</string>
+    <string name="female_title">زن</string>
+    <string name="save_button">ثبت تغییرات</string>
+    <string name="placeholder_username">نام کاربری خود را وارد کنید</string>
+    <string name="placeholder_phone_number">شماره تماس خود را وارد کنید</string>
+    <string name="placeholder_email">ایمیل خود را وارد کنید</string>
+    <string name="placeholder_birthday">تاریخ تولد خود را انتخاب کنید</string>
+    <string name="report_title">گزارشات</string>
+    <string name="report_daily">روزانه</string>
+    <string name="report_weekly">هفتگی</string>
+    <string name="report_monthly">ماهانه</string>
+    <string name="report_annually">سالانه</string>
+    <string name="range_title">بازه انتخابی</string>
+
+</resources>

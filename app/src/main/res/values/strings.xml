@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">ExpensesManagement</string>
+    <string name="setting_nav_title">Setting</string>
+    <string name="chart_nav_title">Chart</string>
+    <string name="invoices_nav_title">Invoices</string>
+    <string name="home_nav_title">Home</string>
+    <string name="username_default">Username</string>
+    <string name="home_report_title">Total Balance</string>
+    <string name="currency_title">Toman</string>
+    <string name="language_setting_title">Language</string>
+    <string name="theme_setting_title">Theme</string>
+    <string name="welcome_text">Welcome</string>
+    <string name="theme_dark_title">dark</string>
+    <string name="theme_light_title">Light</string>
+    <string name="username_title">Username</string>
+    <string name="email_title">Email</string>
+    <string name="phone_title">Phone Number</string>
+    <string name="birthday_title">Birthday</string>
+    <string name="gender_title">Gender</string>
+    <string name="profile_title">Profile</string>
+    <string name="male_title">Male</string>
+    <string name="female_title">Female</string>
+    <string name="save_button">Save</string>
+    <string name="placeholder_username">Enter your username</string>
+    <string name="placeholder_phone_number">Enter your phone number</string>
+    <string name="placeholder_email">Enter your Email</string>
+    <string name="placeholder_birthday">Chose your birthday</string>
+    <string name="report_title">Report</string>
+    <string name="report_daily">Daily</string>
+    <string name="report_weekly">Weekly</string>
+    <string name="report_monthly">Monthly</string>
+    <string name="report_annually">Annually</string>
+    <string name="range_title">Range</string>
+
+
+</resources>
