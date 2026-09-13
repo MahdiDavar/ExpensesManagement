@@ -40,7 +40,7 @@ fun ExpenseWidgetContent(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "چرتکه",
+            text = "'چرتکه'",
             style = TextStyle(
                 fontSize = 23.sp,
                 fontWeight = FontWeight.Bold
