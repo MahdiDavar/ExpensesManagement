@@ -59,11 +59,10 @@ fun ExpenseWidgetContent(
             verticalAlignment = Alignment.CenterVertically,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Text(text = formatPrice(state.remainingAmount))
-            //    Spacer(GlanceModifier.width(AppSpacing.SM))
-            Text(text = "باقی مانده")
+            Text(text = "مصرف شده")
             Spacer(GlanceModifier.width(AppSpacing.SM))
-            Text("${(state.progress.coerceIn(0f, 1f) * 100).toInt()}%")
+            // Text(text = "${(state.progress.coerceIn(0f, 1f) * 100).toInt()}%")
+            Text(text = formatPrice((state.progress.coerceIn(0f, 1f) * 100).toLong()) + " %")
         }
         Spacer(GlanceModifier.height(AppSpacing.SM))
         Row(
