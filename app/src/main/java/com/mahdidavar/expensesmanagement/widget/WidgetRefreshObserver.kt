@@ -1,5 +1,6 @@
 package com.mahdidavar.expensesmanagement.widget
 
+import android.util.Log
 import com.mahdidavar.expensesmanagement.repository.BudgetRepository
 import com.mahdidavar.expensesmanagement.repository.InvoiceRepository
 import com.mahdidavar.expensesmanagement.utills.PersianDate
@@ -26,6 +27,10 @@ class WidgetRefreshObserver @Inject constructor(
         ) { budget, invoice ->
             budget to invoice
         }.collectLatest {
+            Log.d(
+                "WIDGET_OBSERVER",
+                "Data changed -> refreshing widget"
+            )
             expenseWidgetUpdater.refresh()
         }
     }

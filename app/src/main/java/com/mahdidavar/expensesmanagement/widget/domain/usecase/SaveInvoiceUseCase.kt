@@ -3,12 +3,10 @@ package com.mahdidavar.expensesmanagement.widget.domain.usecase
 import android.util.Log
 import com.mahdidavar.expensesmanagement.db.entity.InvoicesEntity
 import com.mahdidavar.expensesmanagement.repository.InvoicesRepositoryImpl
-import com.mahdidavar.expensesmanagement.widget.data.ExpenseWidgetUpdater
 import javax.inject.Inject
 
 class SaveInvoiceUseCase @Inject constructor(
-    private val repository: InvoicesRepositoryImpl,
-    private val widgetUpdater: ExpenseWidgetUpdater
+    private val repository: InvoicesRepositoryImpl
 ) {
     suspend operator fun invoke(invoices: InvoicesEntity) {
         Log.d("WidgetDebug", "SaveInvoiceUseCase called")
@@ -20,8 +18,5 @@ class SaveInvoiceUseCase @Inject constructor(
             dateFa = invoices.time,
             dateNum = invoices.date
         )
-        Log.d("WidgetDebug", "Invoice saved")
-        widgetUpdater.refresh()
-        Log.d("WidgetDebug", "Calling refresh")
     }
 }
