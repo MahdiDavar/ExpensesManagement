@@ -61,8 +61,7 @@ fun ExpenseWidgetContent(
         ) {
             Text(text = "مصرف شده")
             Spacer(GlanceModifier.width(AppSpacing.SM))
-            // Text(text = "${(state.progress.coerceIn(0f, 1f) * 100).toInt()}%")
-            Text(text = formatPrice((state.progress.coerceIn(0f, 1f) * 100).toLong()) + " %")
+            Text(text = "${(state.progress.coerceIn(0f, 1f) * 100).toInt()}%")
         }
         Spacer(GlanceModifier.height(AppSpacing.SM))
         Row(

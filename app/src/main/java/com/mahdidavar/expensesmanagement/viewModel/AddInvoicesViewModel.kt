@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mahdidavar.expensesmanagement.db.entity.InvoicesEntity
 import com.mahdidavar.expensesmanagement.repository.InvoicesRepositoryImpl
-import com.mahdidavar.expensesmanagement.widget.data.ExpenseWidgetUpdater
 import com.mahdidavar.expensesmanagement.widget.domain.usecase.SaveInvoiceUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -19,8 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AddInvoicesViewModel @Inject constructor(
     private val invoiceRepository: InvoicesRepositoryImpl,
-    private val saveInvoiceUseCase: SaveInvoiceUseCase ,
-    private val widgetUpdater: ExpenseWidgetUpdater
+    private val saveInvoiceUseCase: SaveInvoiceUseCase
 ) : ViewModel() {
     var price by mutableStateOf("")
         private set
@@ -76,8 +74,6 @@ class AddInvoicesViewModel @Inject constructor(
                     date = dateNum
                 )
             )
-
-            widgetUpdater.refresh()
             clearForm()
             _success.emit(true)
         }
