@@ -74,6 +74,7 @@ class ExpenseWidgetUpdater @Inject constructor(
                         this[ExpensesWidgetKeys.PROGRESS] = state.progress
                         this[ExpensesWidgetKeys.LAST_TITLE] = state.lastInvoiceTitle
                         this[ExpensesWidgetKeys.LAST_PRICE] = state.lastInvoicePrice
+                        this[ExpensesWidgetKeys.WARNING_TYPE] = state.warningType.name
                     }
                 }
                 widget.update(

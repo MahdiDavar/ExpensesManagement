@@ -17,7 +17,7 @@ interface InvoiceDao {
     @Insert
     suspend fun insertInvoice(invoice: InvoicesEntity): Long
 
-    @Query("SELECT * FROM ${MyDataBase.TABLE_NAME}")
+    @Query("SELECT * FROM ${MyDataBase.TABLE_NAME} ORDER BY date DESC , time DESC ")
     fun getAllInvoices(): Flow<List<InvoicesEntity>>
 
     @Query("SELECT * FROM ${MyDataBase.TABLE_NAME} WHERE id = :id LIMIT 1")
@@ -53,7 +53,7 @@ interface InvoiceDao {
     /* @Query("SELECT * FROM invoices ORDER BY date DESC LIMIT 1")
      fun getLastInvoice(): Flow<InvoicesEntity?>*/
 
-    @Query("SELECT * FROM invoices WHERE (date / 10000) = :year AND ((date/100)%100) =:month ORDER BY date DESC")
+    @Query("SELECT * FROM invoices WHERE (date / 10000) = :year AND ((date/100)%100) =:month ORDER BY date DESC , time DESC ")
     fun getInvoiceOfMonth(
         year: Int, month: Int
     ): Flow<List<InvoicesEntity>>

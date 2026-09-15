@@ -29,7 +29,7 @@ class ShowInvoicesViewModel @Inject constructor(
 
     private fun invoicesObserver() {
         viewModelScope.launch {
-            repository.getAllInvoices().collectLatest { list ->
+            repository.getAllInvoices().collect { list ->
                 updateList(list)
             }
         }

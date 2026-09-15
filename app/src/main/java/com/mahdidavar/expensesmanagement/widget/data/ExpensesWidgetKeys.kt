@@ -11,4 +11,5 @@ object ExpensesWidgetKeys {
     val PROGRESS = floatPreferencesKey("progress")
     val LAST_TITLE = stringPreferencesKey("last_title")
     val LAST_PRICE = longPreferencesKey("last_price")
+    val WARNING_TYPE = stringPreferencesKey("warning_type")
 }
