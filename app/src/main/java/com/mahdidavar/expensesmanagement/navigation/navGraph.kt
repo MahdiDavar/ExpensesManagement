@@ -25,10 +25,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -43,38 +39,42 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.mahdidavar.expensesmanagement.R
-import com.mahdidavar.expensesmanagement.navigation.BtnNavScreen.Companion.navItem
 import com.mahdidavar.expensesmanagement.ui.screens.AddInvoiceScreen
-import com.mahdidavar.expensesmanagement.ui.screens.ReportScreen
 import com.mahdidavar.expensesmanagement.ui.screens.EditProfile
 import com.mahdidavar.expensesmanagement.ui.screens.HomeScreen
 import com.mahdidavar.expensesmanagement.ui.screens.LoginScreen
+import com.mahdidavar.expensesmanagement.ui.screens.ReportScreen
 import com.mahdidavar.expensesmanagement.ui.screens.SettingScreen
 import com.mahdidavar.expensesmanagement.ui.screens.ShowInvoiceScreen
 import com.mahdidavar.expensesmanagement.ui.screens.SplashScreen
 import com.mahdidavar.expensesmanagement.ui.theme.DarkBlue
 import com.mahdidavar.expensesmanagement.ui.theme.negare
-import com.mahdidavar.expensesmanagement.utills.AnimationVisibility
 
 
 @Composable
-fun SetUpNavigation() {
+fun SetUpNavigation(
+    fromWidget: Boolean = false
+) {
     val navControlling = rememberNavController()
     NavHost(
         navController = navControlling,
-        startDestination = Routes.SplashPage,
+        startDestination =
+            if (fromWidget) {
+                Routes.ShowInvoicesPage
+            } else {
+                Routes.SplashPage
+            },
         enterTransition = {
-                    slideInHorizontally(tween(500)) { fullWidth ->
-                        -fullWidth
-                    }
+            slideInHorizontally(tween(500)) { fullWidth ->
+                -fullWidth
+            }
         },
         exitTransition = {
-                    slideOutHorizontally(tween(500)) { fullWidth ->
-                        fullWidth
-                    }
+            slideOutHorizontally(tween(500)) { fullWidth ->
+                fullWidth
+            }
         }
     ) {
         composable<Routes.HomePage> {
@@ -92,11 +92,13 @@ fun SetUpNavigation() {
         composable<Routes.AddInvoicesPage>(
             enterTransition = {
                 slideInVertically(tween(500)) { fullHeight ->
-                -fullHeight
-            }} ,
-            exitTransition =  {
+                    -fullHeight
+                }
+            },
+            exitTransition = {
                 slideOutVertically(
-                    tween(500)){fullHeight ->
+                    tween(500)
+                ) { fullHeight ->
                     fullHeight
                 }
             }
@@ -113,10 +115,12 @@ fun SetUpNavigation() {
             enterTransition = {
                 slideInVertically(tween(500)) { fullHeight ->
                     -fullHeight
-                }} ,
-            exitTransition =  {
+                }
+            },
+            exitTransition = {
                 slideOutVertically(
-                    tween(500)){fullHeight ->
+                    tween(500)
+                ) { fullHeight ->
                     fullHeight
                 }
             }
@@ -144,13 +148,19 @@ fun BottomNavigation(navController: NavController) {
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            BottomNavigationItem(text = stringResource(R.string.setting_nav_title), icon = Icons.Filled.Settings) {
+            BottomNavigationItem(
+                text = stringResource(R.string.setting_nav_title),
+                icon = Icons.Filled.Settings
+            ) {
                 navController.navigate(Routes.SettingPage) {
                     popUpTo(Routes.HomePage) { inclusive = false }
                     launchSingleTop = true
                 }
             }
-            BottomNavigationItem(text = stringResource(R.string.chart_nav_title), icon = Icons.Filled.BarChart) {
+            BottomNavigationItem(
+                text = stringResource(R.string.chart_nav_title),
+                icon = Icons.Filled.BarChart
+            ) {
                 navController.navigate(Routes.ChartPage) {
                     popUpTo(Routes.HomePage) { inclusive = false }
                     launchSingleTop = true
@@ -175,13 +185,19 @@ fun BottomNavigation(navController: NavController) {
                     tint = DarkBlue
                 )
             }
-            BottomNavigationItem(text = stringResource(R.string.invoices_nav_title), icon = Icons.AutoMirrored.Filled.List) {
+            BottomNavigationItem(
+                text = stringResource(R.string.invoices_nav_title),
+                icon = Icons.AutoMirrored.Filled.List
+            ) {
                 navController.navigate(Routes.ShowInvoicesPage) {
                     popUpTo(Routes.HomePage) { inclusive = false }
                     launchSingleTop = true
                 }
             }
-            BottomNavigationItem(text =stringResource(R.string.home_nav_title), icon = Icons.Filled.Home) {
+            BottomNavigationItem(
+                text = stringResource(R.string.home_nav_title),
+                icon = Icons.Filled.Home
+            ) {
                 navController.navigate(Routes.HomePage) {
                     popUpTo(Routes.HomePage) { inclusive = false }
                     launchSingleTop = true
@@ -222,55 +238,6 @@ private fun NavController.navigateSingle(routes: String) {
             inclusive = false
         }
         launchSingleTop = true
-    }
-}
-
-@Composable
-fun BottomNavigation2(
-    navController: NavController
-) {
-    val backStackEntry = navController.currentBackStackEntryAsState()
-    val fullRoute = backStackEntry.value?.destination?.route
-    val currentRoute =
-        fullRoute?.substringAfterLast(".")?.substringBefore("?")// فقط اسم ساده
-
-    val isShow = navItem.any { it.route.substringBefore("(") == currentRoute }
-    AnimationVisibility(
-        isShow = isShow
-    ) {
-        NavigationBar(
-            modifier = Modifier.fillMaxWidth(),
-            containerColor = Color.White,
-        ) {
-            navItem.forEach { nav ->
-                NavigationBarItem(
-                    colors = NavigationBarItemDefaults.colors(
-                        selectedIconColor = Color.White,
-                        indicatorColor = Color(0xffEF472C),
-                        unselectedIconColor = Color.Black,
-                        selectedTextColor = Color(0xffEF472C),
-                        unselectedTextColor = Color.Black
-                    ),
-                    selected = currentRoute == nav.route.substringBefore("("),
-                    icon = {
-                        Icon(
-                            imageVector = (nav.icon),
-                            contentDescription = "",
-                            modifier = Modifier.size(22.dp)
-                        )
-                    },
-                    label = {
-                        Text(
-                            text = nav.title,
-                            style = MaterialTheme.typography.bodyMedium,
-                            fontWeight = FontWeight.SemiBold
-                        )
-                    },
-                    onClick = { navController.navigateSingle(nav.route) }
-                )
-            }
-        }
-
     }
 }
 

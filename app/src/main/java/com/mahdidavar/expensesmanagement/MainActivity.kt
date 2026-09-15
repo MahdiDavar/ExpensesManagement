@@ -19,6 +19,9 @@ class MainActivity : ComponentActivity() {
     private val viewModel: SettingViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val fromWidget = intent.getBooleanExtra("FROM_WIDGET" , false)
+
         enableEdgeToEdge()
         setContent {
             val themeState by viewModel.themeStatus.collectAsStateWithLifecycle()
@@ -31,7 +34,9 @@ class MainActivity : ComponentActivity() {
             }
             ExpensesManagementTheme(darkTheme = themeState) {
                 //   containerColor = Color(0xFF0B1220)
-                SetUpNavigation()
+                SetUpNavigation(
+                    fromWidget = fromWidget
+                )
             }
         }
     }
