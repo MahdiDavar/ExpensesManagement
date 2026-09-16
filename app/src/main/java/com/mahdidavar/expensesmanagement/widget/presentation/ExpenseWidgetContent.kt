@@ -31,6 +31,7 @@ import com.mahdidavar.expensesmanagement.ui.theme.Red
 import com.mahdidavar.expensesmanagement.ui.theme.Yellow
 import com.mahdidavar.expensesmanagement.utills.NumberFormatter.formatPrice
 import com.mahdidavar.expensesmanagement.widget.action.OpenAppFromWidgetAction
+import com.mahdidavar.expensesmanagement.widget.action.OpenWidgetAction
 import com.mahdidavar.expensesmanagement.widget.domain.ExpenseWidgetState
 
 @SuppressLint("RestrictedApi")
@@ -48,7 +49,10 @@ fun ExpenseWidgetContent(
         modifier = GlanceModifier
             .fillMaxSize()
             .padding(AppSpacing.SM)
-            .background(ColorProvider(NewWhite)),
+            .background(ColorProvider(NewWhite))
+            .clickable(
+                actionRunCallback<OpenWidgetAction>()
+            ),
         verticalAlignment = Alignment.CenterVertically,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

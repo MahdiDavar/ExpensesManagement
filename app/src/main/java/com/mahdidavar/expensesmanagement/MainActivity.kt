@@ -20,7 +20,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val fromWidget = intent.getBooleanExtra("FROM_WIDGET" , false)
+        val fromWidget = intent.getBooleanExtra("FROM_WIDGET", false)
+        val widgetDestination = intent.getStringExtra("WIDGET_DESTINATION")
+
 
         enableEdgeToEdge()
         setContent {
@@ -35,7 +37,8 @@ class MainActivity : ComponentActivity() {
             ExpensesManagementTheme(darkTheme = themeState) {
                 //   containerColor = Color(0xFF0B1220)
                 SetUpNavigation(
-                    fromWidget = fromWidget
+                    fromWidget = fromWidget,
+                    widgetDestination = widgetDestination
                 )
             }
         }

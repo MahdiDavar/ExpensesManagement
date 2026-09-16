@@ -55,7 +55,8 @@ import com.mahdidavar.expensesmanagement.ui.theme.negare
 
 @Composable
 fun SetUpNavigation(
-    fromWidget: Boolean = false
+    fromWidget: Boolean = false,
+    widgetDestination: String? = null
 ) {
     val navControlling = rememberNavController()
     NavHost(

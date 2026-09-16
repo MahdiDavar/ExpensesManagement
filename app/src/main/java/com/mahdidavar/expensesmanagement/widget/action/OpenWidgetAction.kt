@@ -7,7 +7,7 @@ import androidx.glance.action.ActionParameters
 import androidx.glance.appwidget.action.ActionCallback
 import com.mahdidavar.expensesmanagement.MainActivity
 
-class OpenAppFromWidgetAction : ActionCallback {
+class OpenWidgetAction : ActionCallback {
     override suspend fun onAction(
         context: Context,
         glanceId: GlanceId,
@@ -15,10 +15,11 @@ class OpenAppFromWidgetAction : ActionCallback {
     ) {
         val intent = Intent(context, MainActivity::class.java).apply {
             putExtra("FROM_WIDGET", true)
-            putExtra("WIDGET_DESTINATION" , "LAST_INVOICE")
+            putExtra("WIDGET_DESTINATION", "INVOICES")
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or
                     Intent.FLAG_ACTIVITY_CLEAR_TOP
         }
         context.startActivity(intent)
     }
+
 }
