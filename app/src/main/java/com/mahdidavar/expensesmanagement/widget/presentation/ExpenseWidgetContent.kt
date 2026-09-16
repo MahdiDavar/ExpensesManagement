@@ -149,7 +149,7 @@ fun ExpenseWidgetContent(
         }
         if (state.lastInvoiceTitle.isNotBlank()) {
             Spacer(GlanceModifier.height(AppSpacing.XS))
-            Text(text = "آخرین هزینه", style = TextStyle(fontSize = 14.sp))
+            Text(text = "آخرین هزینه--", style = TextStyle(fontSize = 14.sp))
             Spacer(GlanceModifier.height(AppSpacing.XS))
             Row(
                 modifier = GlanceModifier
